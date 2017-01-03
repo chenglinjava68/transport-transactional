@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="root.mybatis.mapper.dao.JmsToCalcMapper">
+  <resultMap id="BaseResultMap" type="root.mybatis.mapper.bean.JmsToCalc">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SYSTEM_FLAG" jdbcType="VARCHAR" property="systemFlag" />
+    <result column="ORDER_CATALOG" jdbcType="INTEGER" property="orderCatalog" />
+    <result column="ORDER_ID" jdbcType="BIGINT" property="orderId" />
+    <result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="GFUSER_FROM_CODE" jdbcType="VARCHAR" property="gfuserFromCode" />
+    <result column="GFUSER_TO_CODE" jdbcType="VARCHAR" property="gfuserToCode" />
+    <result column="PAYMENT_TERM" jdbcType="VARCHAR" property="paymentTerm" />
+    <result column="START_ACCOUNT_ID" jdbcType="VARCHAR" property="startAccountId" />
+    <result column="END_ACCOUNT_ID" jdbcType="VARCHAR" property="endAccountId" />
+    <result column="SYSTEM_FROM" jdbcType="INTEGER" property="systemFrom" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SYSTEM_FLAG, ORDER_CATALOG, ORDER_ID, ORDER_NO, GFUSER_FROM_CODE, GFUSER_TO_CODE, 
+    PAYMENT_TERM, START_ACCOUNT_ID, END_ACCOUNT_ID, SYSTEM_FROM, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jms_to_calc
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jms_to_calc
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="root.mybatis.mapper.bean.JmsToCalc">
+    insert into jms_to_calc (ID, SYSTEM_FLAG, ORDER_CATALOG, 
+      ORDER_ID, ORDER_NO, GFUSER_FROM_CODE, 
+      GFUSER_TO_CODE, PAYMENT_TERM, START_ACCOUNT_ID, 
+      END_ACCOUNT_ID, SYSTEM_FROM, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{systemFlag,jdbcType=VARCHAR}, #{orderCatalog,jdbcType=INTEGER}, 
+      #{orderId,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{gfuserFromCode,jdbcType=VARCHAR}, 
+      #{gfuserToCode,jdbcType=VARCHAR}, #{paymentTerm,jdbcType=VARCHAR}, #{startAccountId,jdbcType=VARCHAR}, 
+      #{endAccountId,jdbcType=VARCHAR}, #{systemFrom,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="root.mybatis.mapper.bean.JmsToCalc">
+    insert into jms_to_calc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="systemFlag != null">
+        SYSTEM_FLAG,
+      </if>
+      <if test="orderCatalog != null">
+        ORDER_CATALOG,
+      </if>
+      <if test="orderId != null">
+        ORDER_ID,
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+      <if test="gfuserFromCode != null">
+        GFUSER_FROM_CODE,
+      </if>
+      <if test="gfuserToCode != null">
+        GFUSER_TO_CODE,
+      </if>
+      <if test="paymentTerm != null">
+        PAYMENT_TERM,
+      </if>
+      <if test="startAccountId != null">
+        START_ACCOUNT_ID,
+      </if>
+      <if test="endAccountId != null">
+        END_ACCOUNT_ID,
+      </if>
+      <if test="systemFrom != null">
+        SYSTEM_FROM,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="systemFlag != null">
+        #{systemFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCatalog != null">
+        #{orderCatalog,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="gfuserFromCode != null">
+        #{gfuserFromCode,jdbcType=VARCHAR},
+      </if>
+      <if test="gfuserToCode != null">
+        #{gfuserToCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentTerm != null">
+        #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="startAccountId != null">
+        #{startAccountId,jdbcType=VARCHAR},
+      </if>
+      <if test="endAccountId != null">
+        #{endAccountId,jdbcType=VARCHAR},
+      </if>
+      <if test="systemFrom != null">
+        #{systemFrom,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="root.mybatis.mapper.bean.JmsToCalc">
+    update jms_to_calc
+    <set>
+      <if test="systemFlag != null">
+        SYSTEM_FLAG = #{systemFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCatalog != null">
+        ORDER_CATALOG = #{orderCatalog,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        ORDER_ID = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="gfuserFromCode != null">
+        GFUSER_FROM_CODE = #{gfuserFromCode,jdbcType=VARCHAR},
+      </if>
+      <if test="gfuserToCode != null">
+        GFUSER_TO_CODE = #{gfuserToCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentTerm != null">
+        PAYMENT_TERM = #{paymentTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="startAccountId != null">
+        START_ACCOUNT_ID = #{startAccountId,jdbcType=VARCHAR},
+      </if>
+      <if test="endAccountId != null">
+        END_ACCOUNT_ID = #{endAccountId,jdbcType=VARCHAR},
+      </if>
+      <if test="systemFrom != null">
+        SYSTEM_FROM = #{systemFrom,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="root.mybatis.mapper.bean.JmsToCalc">
+    update jms_to_calc
+    set SYSTEM_FLAG = #{systemFlag,jdbcType=VARCHAR},
+      ORDER_CATALOG = #{orderCatalog,jdbcType=INTEGER},
+      ORDER_ID = #{orderId,jdbcType=BIGINT},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      GFUSER_FROM_CODE = #{gfuserFromCode,jdbcType=VARCHAR},
+      GFUSER_TO_CODE = #{gfuserToCode,jdbcType=VARCHAR},
+      PAYMENT_TERM = #{paymentTerm,jdbcType=VARCHAR},
+      START_ACCOUNT_ID = #{startAccountId,jdbcType=VARCHAR},
+      END_ACCOUNT_ID = #{endAccountId,jdbcType=VARCHAR},
+      SYSTEM_FROM = #{systemFrom,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

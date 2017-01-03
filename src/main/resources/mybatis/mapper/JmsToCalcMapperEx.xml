@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="root.mybatis.mapper.dao.ex.JmsToCalcMapperEx">
+    <select id="selectlist" parameterType="root.mybatis.mapper.bean.JmsToCalc" resultMap="root.mybatis.mapper.dao.JmsToCalcMapper.BaseResultMap">
+        SELECT
+        <include refid="root.mybatis.mapper.dao.JmsToCalcMapper.Base_Column_List"/>
+        FROM jms_to_calc
+        <if test="status != null">
+        WHERE status = #{status}
+        </if>
+        limit 0, 2
+    </select>
+</mapper>
