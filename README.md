@@ -1,0 +1,2 @@
+# transport-transactional
+spring boot分布式事务处理采用activemq持久性事务消息保证消息落地,如果异常则落地到数据库,用quartz2的动态定时任务，来继续发送消息.
